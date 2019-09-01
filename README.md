@@ -42,5 +42,13 @@
  $router.push({path:"name?a=123"})或者$router.push({path:"name",query:{a:123}})
  $router.go(1)  
  ```
-
+## MongoDB安装和环境配置
+ * 高可拓展性
+ * 分布式存储
+ * 低成本
+ * 结构灵活
+### 需要操作
+ * 下载安装包或者压缩包
+ * 添加db存储和日志存储文件夹
+ * 添加服务 配置环境变量 启动Mongo
 
