@@ -8,16 +8,17 @@ let connection = mysql.createConnection({
     database:'mysql'
 })
 
-connection.connect((err)=>{
-    if(err){
-        console.log(err);
+// let goodsList = null;
+
+// connection.connect((err)=>{
+//     if(err){
+//         console.log(err);
         
-    }else{
-        console.log('success');
+//     }else{
+//         console.log('success');
    
-    }
-})
-connection.query('select name from users;',(err,res,fields)=>{
-    console.log(res);
-   
-})
+//     }
+// })
+
+
+module.exports = connection
