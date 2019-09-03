@@ -14,7 +14,7 @@ Goods.connect((err)=>{
 })
 
 let goodsList = null
-Goods.query('select name from users;',(err,res,fields)=>{
+Goods.query('select * from users;',(err,res,fields)=>{
     if(err){
         goodsList = err
         return
@@ -32,6 +32,10 @@ router.get("/",(req,res,next)=>{
             name:goodsList
         }
     })
+})
+
+router.post('/addCart',(req,res,next)=>{
+    
 })
 
 module.exports = router
