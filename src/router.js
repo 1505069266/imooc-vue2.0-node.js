@@ -24,19 +24,17 @@ export default new Router({
     {
       path: '/GoodsList',
       name: 'GoodsList',
-      component: () => import('./views/GoodsList'),
-      children:[
-        {
-          path:'title',
-          name:'title',
-          component:()=>import('./views/Title.vue')
-        },
-        {
-          path:'image',
-          name:'image',
-          component:()=>import('./views/Image.vue')
-        }
-      ]
+      component: () => import('./views/GoodsList')
+    },
+    {
+      path: '/me',
+      name: 'me',
+      component: () => import('./views/me')
+    },
+    {
+      path: '/cart',
+      name: 'me',
+      component: () => import('./views/cart')
     }
   ]
 })

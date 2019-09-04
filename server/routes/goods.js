@@ -13,17 +13,6 @@ Goods.connect((err)=>{
     }
 })
 
-<<<<<<< HEAD
-let goodsList = null
-Goods.query('select * from users;',(err,res,fields)=>{
-    if(err){
-        goodsList = err
-        return
-    }else{
-        goodsList =res
-    }
-})
-=======
 // let goodsList = null
 // Goods.query('select id from users;',(err,res,fields)=>{
 //     if(err){
@@ -33,9 +22,8 @@ Goods.query('select * from users;',(err,res,fields)=>{
 //         goodsList =res
 //     }
 // })
->>>>>>> 218ba13ce29df9d21014e0c43f256083f4e1723d
 
-router.get("/",(req,res,next)=>{
+router.get("/list",(req,res,next)=>{
     let page = req.param("page") //当前页数
     let pageSize = req.param("pageSize") //每页多少条数据
     let sort = req.param('sort')

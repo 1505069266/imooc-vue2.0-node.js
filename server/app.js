@@ -21,6 +21,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//app.use中写function  会优先进来   进行拦截判断
+app.use(function(req,res,next){
+  if(req.cookies.userId){
+    next();
+  } else {
+    if(req.originalUrl == '/users/login' || req.originalUrl == '/users/logout' || req.path == '/goods/list'){
+      next()
+    }else{
+      res.json({
+        status:'10001',
+        mag:'当前为登录',
+        result:''
+      })
+    }
+  }
+
+})
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/goods', goodsRouter);
@@ -29,6 +46,8 @@ app.use('/goods', goodsRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {
