@@ -29,7 +29,7 @@ router.get("/list",(req,res,next)=>{
     let sort = req.param('sort')
     let name = req.param('name')
     let skip = (page-1) * pageSize
-    let q = `SELECT * FROM users where name=${name} LIMIT  ${skip},${pageSize} `
+    let q = `SELECT * FROM goods`
     Goods.query(q,(err,ress,fields)=>{
         if(err){
             res.status(503).json({
@@ -41,7 +41,7 @@ router.get("/list",(req,res,next)=>{
             status:'0',
             msg:'',
             result:{
-                peoples:ress
+                data:ress
             }
         })
     })
