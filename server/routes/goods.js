@@ -2,7 +2,8 @@ const express = require('express')
 var router = express.Router()
 const mysql = require('mysql')
 const Goods = require('../models/goods.js')
-
+const Core = require('@alicloud/pop-core');
+const SMSClient = require('@alicloud/sms-sdk')
 
 Goods.connect((err)=>{
     if(err){
@@ -24,9 +25,29 @@ Goods.connect((err)=>{
 // })
 
 router.get('/',(req,res,next)=>{
-    res.json({
-        data:'这是goods数据'
-    })
+    // ACCESS_KEY_ID/ACCESS_KEY_SECRET 根据实际申请的账号信息进行替换
+const accessKeyId = 'LTAI4Fx5vVSRiMVPkbvtUeE1'
+const secretAccessKey = 'b4kNJGwR2Ek1nI6haLOrhRVYTZwQpR'
+
+//初始化sms_client
+let smsClient = new SMSClient({accessKeyId, secretAccessKey})
+
+smsClient.sendSMS({
+    PhoneNumbers: '17855868561',
+    SignName: '乐霸霸菜馆',
+    TemplateCode: '验证登录注册'
+    // TemplateParam: '{"code":"12345"}'
+}).then(function (res) {
+    let {Code}=res
+    if (Code === 'OK') {
+        //处理返回参数
+        console.log(res)
+    }
+}, function (err) {
+    console.log(err)
+})
+
+
 })
 
 router.get("/list",(req,res,next)=>{
