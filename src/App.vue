@@ -19,6 +19,7 @@
 </template>
 <script>
 import { Icon } from 'vant';
+import axios from 'axios'
 export default {
   name:'app',
   components:{
@@ -29,6 +30,13 @@ export default {
 
     }
   },
+  created(){
+    axios.get("/goods").then(response=>{
+      let res = response.data
+      console.log(res);
+      
+    })
+  }
 
 }
 </script>

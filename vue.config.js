@@ -9,6 +9,9 @@ module.exports = {
           pathRewrite: {
             '^/api': ''
           }
+        },
+        '/goods':{
+          target:'http://localhost:3000'
         }
       }
     }
