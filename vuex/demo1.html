@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./../node_modules/vuex/dist/vuex.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}{{}}
+        <counter></counter>
+        <button @click="handleIncrement">+</button>
+        <input type="text" v-model="name">{{nameV}}
+        <button @click="handleUpdatename">修改名字</button>
+    </div>
+    <script>
+        const counter = {
+            template:`
+                <div>{{ count }}</div>
+            `,
+            computed:{
+                count(){
+                    return this.$store.state.count
+                }
+            }
+        }
+        const storeVuex = new Vuex.Store({
+            state:{
+                count:0,
+                name:'朱晓乐'
+            },
+            mutations:{
+                increment(state){
+                    state.count ++
+                },
+                updateName(state,userName){
+                    state.name = userName
+                }  
+            }
+        })
+        new Vue({
+            el:'#app',
+            store:storeVuex,
+            data:{
+                msg:'Vuex使用',
+                name:'郑璇'
+            },
+            components:{
+                counter
+            },
+            computed:{
+                nameV(){
+                    return this.$store.state.name
+                }
+            },
+            methods:{
+                handleIncrement(){
+                    this.$store.commit('increment')
+                },
+                handleUpdatename(){
+                    this.$store.commit('updateName',this.name)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

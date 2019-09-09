@@ -24,6 +24,7 @@
     "babel-plugin-import": "^1.12.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-template-compiler": "^2.6.10"
   }
 }
